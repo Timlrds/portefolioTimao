@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Animations au Scroll</title>
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Section Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1>Bienvenue sur mon Portfolio</h1>
+            <p>Découvrez mes projets avec des animations fluides</p>
+            <button class="cta-button" data-aos="zoom-in" data-aos-delay="500" data-aos-duration="800">
+                Commencer l'aventure
+            </button>
+        </div>
+    </section>
+
+    <!-- Section À Propos -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right" data-aos-duration="1000">
+                    <h2>À Propos de Moi</h2>
+                    <p>Passionné par le développement web et les animations, je crée des expériences utilisateur exceptionnelles qui captivent et inspirent.</p>
+                    <p>Mon expertise couvre le développement front-end moderne, avec une attention particulière aux détails visuels et à la performance.</p>
+                </div>
+                <div class="about-image" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="placeholder-image">
+                        <span>Image de profil</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Compétences -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 data-aos="fade-down" data-aos-duration="800">Mes Compétences</h2>
+            <div class="skills-grid">
+                <div class="skill-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="skill-icon">🚀</div>
+                    <h3>Frontend</h3>
+                    <p>HTML, CSS, JavaScript, React</p>
+                </div>
+                <div class="skill-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="skill-icon">⚙️</div>
+                    <h3>Backend</h3>
+                    <p>Node.js, Python, Bases de données</p>
+                </div>
+                <div class="skill-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="skill-icon">🎨</div>
+                    <h3>Design</h3>
+                    <p>UI/UX, Figma, Prototypage</p>
+                </div>
+                <div class="skill-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="skill-icon">📱</div>
+                    <h3>Mobile</h3>
+                    <p>React Native, Flutter</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Projets -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 data-aos="fade-up" data-aos-duration="800">Mes Projets</h2>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="project-image">
+                        <div class="placeholder-image">Projet 1</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Application E-commerce</h3>
+                        <p>Une plateforme complète avec panier, paiement et gestion des commandes.</p>
+                        <div class="project-tags">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="project-image">
+                        <div class="placeholder-image">Projet 2</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Dashboard Analytics</h3>
+                        <p>Interface d'administration avec graphiques interactifs et données en temps réel.</p>
+                        <div class="project-tags">
+                            <span>Vue.js</span>
+                            <span>D3.js</span>
+                            <span>API REST</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="project-image">
+                        <div class="placeholder-image">Projet 3</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>App Mobile Fitness</h3>
+                        <p>Application de suivi d'activité physique avec géolocalisation et défis communautaires.</p>
+                        <div class="project-tags">
+                            <span>React Native</span>
+                            <span>Firebase</span>
+                            <span>Maps API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right" data-aos-duration="1000">
+                    <h2>Contactez-moi</h2>
+                    <p>Vous avez un projet en tête ? N'hésitez pas à me contacter !</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="icon">📧</span>
+                            <span>contact@exemple.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">📱</span>
+                            <span>+33 6 12 34 56 78</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">📍</span>
+                            <span>Paris, France</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Votre email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Votre message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p data-aos="fade-up" data-aos-duration="800">
+                © 2024 Portfolio. Tous droits réservés.
+            </p>
+        </div>
+    </footer>
+
+    <!-- AOS JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
