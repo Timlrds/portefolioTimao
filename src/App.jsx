@@ -1,14 +1,16 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Desktop from './components/Desktop'
 import Taskbar from './components/Taskbar'
 import Window98 from './components/Window98'
+import CVModal from './components/CVModal'
 
 function App() {
   const [windows, setWindows] = useState([])
   const [time, setTime] = useState(new Date())
+  const [cvModalState, setCvModalState] = useState({ isOpen: false, isMinimized: false })
 
   // Update clock every second
-  useState(() => {
+  React.useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date())
     }, 1000)
@@ -16,16 +18,23 @@ function App() {
   }, [])
 
   const openWindow = (id, title, content, icon) => {
-    // Don't open if already exists
-    if (windows.find(w => w.id === id)) return
+    console.log('openWindow called with:', id, title)
+    console.log('Current windows:', windows.length, windows.map(w => ({ id: w.id, minimized: w.isMinimized })))
     
-    setWindows([...windows, {
-      id,
-      title,
-      content,
-      icon,
-      isMinimized: false
-    }])
+    // Always force open the window (remove existing first, then create new)
+    console.log('Force opening window:', id)
+    setWindows(prevWindows => {
+      // Remove existing window with same id
+      const filteredWindows = prevWindows.filter(w => w.id !== id)
+      // Add new window
+      return [...filteredWindows, {
+        id,
+        title,
+        content,
+        icon,
+        isMinimized: false
+      }]
+    })
   }
 
   const closeWindow = (id) => {
@@ -40,7 +49,7 @@ function App() {
 
   return (
     <div className="win98-app">
-      <Desktop openWindow={openWindow} />
+      <Desktop openWindow={openWindow} onCvModalStateChange={setCvModalState} />
       
       {/* Render Windows */}
       {windows.map((window, index) => (
@@ -62,6 +71,21 @@ function App() {
         windows={windows} 
         onWindowClick={minimizeWindow}
         time={time}
+        cvModalState={cvModalState}
+        onCvModalRestore={() => {
+          console.log('onCvModalRestore called - using same logic as desktop double-click')
+          console.log('Setting cvModalState to: { isOpen: true, isMinimized: false }')
+          setCvModalState({ isOpen: true, isMinimized: false })
+        }}
+      />
+
+      {/* CV Modal */}
+      <CVModal 
+        isOpen={cvModalState.isOpen} 
+        isMinimized={cvModalState.isMinimized}
+        onClose={() => setCvModalState({ isOpen: false, isMinimized: false })}
+        onMinimize={() => setCvModalState(prev => ({ ...prev, isMinimized: true }))}
+        onRestore={() => setCvModalState(prev => ({ ...prev, isMinimized: false }))}
       />
     </div>
   )

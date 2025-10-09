@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Draggable from 'react-draggable'
 
 const Window98 = ({ title, icon, children, onClose, onMinimize, zIndex = 1000 }) => {
-  const [position, setPosition] = useState({ x: Math.random() * 200 + 100, y: Math.random() * 100 + 50 })
+  const [position, setPosition] = useState({ x: 100, y: 100 })
 
   return (
     <Draggable
@@ -15,8 +15,9 @@ const Window98 = ({ title, icon, children, onClose, onMinimize, zIndex = 1000 })
         width: '600px',
         maxWidth: '90vw',
         maxHeight: '80vh',
-        zIndex,
-        boxShadow: '4px 4px 10px rgba(0,0,0,0.5)'
+        zIndex: zIndex + 1000,
+        boxShadow: '4px 4px 10px rgba(0,0,0,0.5)',
+        backgroundColor: 'white'
       }}>
         {/* Title Bar */}
         <div className="title-bar">
