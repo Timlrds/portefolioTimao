@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const Taskbar = ({ windows, onWindowClick, time, cvModalState, onCvModalRestore }) => {
+const Taskbar = ({ windows, onWindowClick, time, cvModalState, aboutModalState, gamesModalState, onCvModalRestore, onAboutModalRestore, onGamesModalRestore }) => {
   const [startMenuOpen, setStartMenuOpen] = useState(false)
 
   const formatTime = (date) => {
@@ -149,6 +149,60 @@ const Taskbar = ({ windows, onWindowClick, time, cvModalState, onCvModalRestore 
 
       {/* Open Windows */}
       <div style={{ display: 'flex', gap: '4px', flex: 1 }}>
+        {/* Games Modal dans la barre des tâches si minimisée */}
+        {gamesModalState.isOpen && gamesModalState.isMinimized && (
+          <button
+            onClick={() => {
+              console.log('Games button clicked in taskbar')
+              onGamesModalRestore()
+            }}
+            style={{
+              maxWidth: '160px',
+              padding: '4px 8px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              overflow: 'hidden',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+              background: '#c0c0c0',
+              fontWeight: 'normal'
+            }}
+          >
+            <img src="/Image/gmaecube.jpg" alt="" style={{ width: '16px', height: '16px' }} />
+            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              Jeux.exe
+            </span>
+          </button>
+        )}
+
+        {/* About Modal dans la barre des tâches si minimisée */}
+        {aboutModalState.isOpen && aboutModalState.isMinimized && (
+          <button
+            onClick={() => {
+              console.log('About button clicked in taskbar')
+              onAboutModalRestore()
+            }}
+            style={{
+              maxWidth: '160px',
+              padding: '4px 8px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              overflow: 'hidden',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+              background: '#c0c0c0',
+              fontWeight: 'normal'
+            }}
+          >
+            <img src="/Image/XVll7.png" alt="" style={{ width: '16px', height: '16px' }} />
+            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              À Propos.exe
+            </span>
+          </button>
+        )}
+
         {/* CV Modal dans la barre des tâches si minimisée */}
         {cvModalState.isOpen && cvModalState.isMinimized && (
           <button
@@ -170,7 +224,7 @@ const Taskbar = ({ windows, onWindowClick, time, cvModalState, onCvModalRestore 
               fontWeight: 'normal'
             }}
           >
-            <span>📄</span>
+            <img src="/Image/logopareil87.png" alt="" style={{ width: '16px', height: '16px' }} />
             <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
               CV.doc
             </span>

@@ -5,9 +5,11 @@ import SkillsContent from './windows/SkillsContent'
 import ProjectsContent from './windows/ProjectsContent'
 import ContactContent from './windows/ContactContent'
 
-const Desktop = ({ openWindow, onCvModalStateChange }) => {
+const Desktop = ({ openWindow, onCvModalStateChange, onAboutModalStateChange, onGamesModalStateChange }) => {
   const [iconPositions, setIconPositions] = useState({})
   const [cvModalState, setCvModalState] = useState({ isOpen: false, isMinimized: false })
+  const [aboutModalState, setAboutModalState] = useState({ isOpen: false, isMinimized: false })
+  const [gamesModalState, setGamesModalState] = useState({ isOpen: false, isMinimized: false })
 
   // Notifier le parent des changements d'état de la modal CV
   useEffect(() => {
@@ -15,12 +17,26 @@ const Desktop = ({ openWindow, onCvModalStateChange }) => {
       onCvModalStateChange(cvModalState)
     }
   }, [cvModalState, onCvModalStateChange])
+
+  // Notifier le parent des changements d'état de la modal About
+  useEffect(() => {
+    if (onAboutModalStateChange) {
+      onAboutModalStateChange(aboutModalState)
+    }
+  }, [aboutModalState, onAboutModalStateChange])
+
+  // Notifier le parent des changements d'état de la modal Games
+  useEffect(() => {
+    if (onGamesModalStateChange) {
+      onGamesModalStateChange(gamesModalState)
+    }
+  }, [gamesModalState, onGamesModalStateChange])
   const desktopIcons = [
     {
       id: 'about',
       title: 'À Propos.exe',
       icon: '/Image/XVll7.png',
-      content: <AboutContent />
+      content: null // Will be handled by modal
     },
     {
       id: 'skills',
@@ -74,6 +90,8 @@ const Desktop = ({ openWindow, onCvModalStateChange }) => {
               console.log('Double click on:', icon.id, icon.title)
               if (icon.id === 'cv') {
                 setCvModalState({ isOpen: true, isMinimized: false })
+              } else if (icon.id === 'about') {
+                setAboutModalState({ isOpen: true, isMinimized: false })
               } else {
                 openWindow(icon.id, icon.title, icon.content, icon.icon)
               }
